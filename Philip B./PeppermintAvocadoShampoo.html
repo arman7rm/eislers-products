@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .short-description .description {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .short-description .container-col {
+            display: none;
+        }
+
+        .short-description .container-row {
+            display: none;
+        }
+
+        .short-description .summary p {
+            font-size: 16px;
+            text-align: left;
+            margin-top: 0px;
+        }
+
+
+        .short-description .summary {
+            background-color: white;
+            color: black;
+            padding: 0;
+        }
+
+        .short-description .summary h2,
+        .short-description .summary h3 {
+            display: none;
+        }
+
+
+
+        .summary {
+            background-color: black;
+            color: white;
+            padding: 100px 10px;
+            margin-bottom: 0;
+            margin-top:0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .summary p {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: lighter;
+        }
+
+        .summary h3 {
+            font-size: 30px;
+            font-weight: 500;
+            font-family: "Univers Next", sans-serif;
+            text-transform: uppercase;
+        }
+
+        .summary h2 {
+            padding: 25px;
+            font-weight: lighter;
+            font-family: "brandon-grotesque", sans-serif;
+            text-transform: uppercase;
+        }
+
+        .description {
+            margin-top:0;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 18px;
+            width: 100%;
+            /* Optional: Add padding if needed */
+        }
+
+        .container-row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .container-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .half-width {
+            width: 50%;
+        }
+
+        .center {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .background-gray {
+            background-color: #f7f5f6;
+        }
+
+        .background-black {
+            background-color: black;
+            padding-top: 5%;
+            padding-bottom: 5%;
+        }
+
+        .inspiration {
+            border-right: 1px solid #000;
+            padding: 10% 15px 10% 15px;
+        }
+
+        .how-to-use {
+            color: white;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .how-to-use p {
+            margin: 15px 0px;
+        }
+
+        .video {
+            position: relative;
+            width: 95%;
+            /* Ensure it takes up 100% of the available space */
+            max-width: 650px;
+            /* Set a max-width for larger screens */
+            margin: 0 auto;
+            /* Center the container */
+            padding-bottom: 40%;
+            padding-left: 10px;
+            padding-right: 10px;
+            /* 16:9 aspect ratio (height / width * 100 = 9 / 16 * 100) */
+            background-color: #000;
+            /* Optional, adds background color */
+            overflow: hidden;
+            /* Hide overflow to maintain aspect ratio */
+        }
+
+        /* Ensure the iframe fits the container */
+        .video iframe {
+            position: absolute;
+            top: 2.5%;
+            left: 2.5%;
+            width: 95%;
+            height: 95%;
+        }
+
+        .image-container {
+            padding: 5%;
+            border-right: 1px solid #000;
+            padding: 10% 15px 10% 15px;
+        }
+
+        .image-container img {
+            width: 80%;
+        }
+
+        .banner {
+            padding: 15px;
+        }
+
+        .recognition {
+            font-style: italic;
+            font-size: 25px;
+            padding-top: 10px;
+        }
+
+        .accordion {
+            max-width: 100%;
+            margin-left: 0;
+            background-color: black;
+            color: white;
+            padding: 15px 10% 15px 10%;
+            border: none;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            color: white;
+            background-color: black;
+            border: none;
+            padding: 15px;
+        }
+
+        .accordion-item:hover,
+        .accordion-item.open {
+            background-color: black;
+        }
+
+        .accordion-item:hover .accordion-header,
+        .accordion-header:hover {
+            color: white;
+            border: 1px solid white;
+        }
+
+        .accordion-header {
+            width: 100%;
+            text-align: left;
+            padding: 20px;
+            background-color: black;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+
+        .accordion-header::after {
+            content: '+';
+            font-size: 30px;
+            font-weight: 300;
+            color: white;
+            background-color: black;
+            /* Default color for the + icon */
+            transition: all 0.3s ease;
+            /* Smooth transition for color and transform */
+        }
+
+        .accordion-header:hover::after {
+            animation: spin 0.5s 1 ease;
+        }
+
+        .accordion-header.open::after {
+            content: '−';
+            /* Change to - when open */
+        }
+
+        .accordion-header.open:hover::after {
+            animation: spin 0.5s 1 ease;
+            /* Change to - when open */
+        }
+
+        .accordion-content {
+            display: none;
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: black;
+            color: white;
+        }
+
+        .accordion-content p,
+        .accordion-content ul {
+            padding-top: 20px;
+            color: white;
+            background-color: black;
+        }
+
+        .accordion-content.open {
+            color: white;
+            display: block;
+            animation: fadeIn 0.3s ease;
+            background-color: black;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .accordion-content ul {
+            padding-left: 20px;
+        }
+
+        .accordion-content li {
+            margin-bottom: 10px;
+        }
+
+        .accordion-content strong {
+            color: white;
+        }
+
+        @media (min-width: 768px) and (max-width: 1350px) {
+
+            .description {
+                font-family: "Times New Roman", Times, serif;
+                font-size: 18px;
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                /* Optional: Add padding if needed */
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .container-row {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .video {
+                width: 95%;
+                /* Allow it to take up nearly all of the screen width */
+                max-width: none;
+                /* Full width on smaller screens */
+                margin: 10px auto;
+                /* Center the element */
+            }
+
+            .how-to-use p {
+                margin-top: 8px;
+                margin-bottom: 8px;
+
+            }
+
+            .how-to-use{
+                width: 100%;
+            }
+
+            .inspiration {
+                border-right: 0px solid #000;
+                width: 100%;
+            }
+            .inspiration p {
+                padding: 15px 0px;
+            }
+
+            .image-container {
+                border-right: 0px solid #000;
+            }
+
+            .fragrance{
+                padding: 20px 0;
+            }
+        }
+    </style>
+
+    <div class="description">
+        <div class="summary">
+            <h3>Philip B.</h3>
+            <h2>Peppermint Avocado Shampoo</h2>
+            <p>
+                A global bestseller, this luxuriously uncommon shampoo leaves hair looking fuller while making your
+                scalp
+                feel
+                tingly-clean and refreshed. The formula is enriched with avocado extract for gentle clarifying. Crisp
+                Peppermint
+                Oil and 16 Plant Extracts impart a cool, invigorating sensation.
+            </p>
+        </div>
+
+        <div class="container-col">
+            <div class="container-row background-gray banner">
+                <div class="container-col half-width inspiration center" style="padding: 5%;">
+                    <p>THE INSPIRATION:</p>
+                    <p>
+                        My goal with these products was to create haircare that not only smells amazing, but also wakes
+                        you
+                        up,
+                        heightens your senses, and leaves your scalp tingly-clean. To make the formulas as refreshing as
+                        possible, I used pure medical-grade peppermint oil, an unusual choice for a haircare company. It
+                        took me
+                        8 months to find the right concentration — and then, of course, the shampoo became a global
+                        bestseller.
+                        I
+                        hope you’ll give these products a few minutes to soak in, so you come away feeling energized and
+                        exhilarated, like you’ve gone from 0 to 100 with the wind blowing through your hair!
+                    </p>
+                </div>
+                <div class="container-col half-width center fragrance">
+                    <p>THE FRAGRANCE:</p>
+                    <h1 style="font-style: italic;">Peppermint</h1>
+                </div>
+            </div>
+            <div class="container-row background-black banner">
+                <div class="container-col half-width center how-to-use">
+                    <p>HOW TO USE</p>
+                    <p>Apply to wet hair; work into a lather. Rinse well. Follow with conditioner through the length and
+                        ends of hair. To make hair feel even more manageable, follow with Detangling Toning Mist.
+                    </p>
+                </div>
+                <div class="center half-width video">
+                    <iframe width="650" height="365" src="https://cdn.shopify.com/videos/c/o/v/fcfa8d8e8a11440eb6d947e6cda0cad9.mp4" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+                </div>
+            </div>
+            <div class="container-col background-gray banner">
+                <div class="container-row ">
+                    <div class="half-width image-container center ">
+                        <img src="https://cdn.shopify.com/s/files/1/0077/5415/4099/files/shampoo_5.webp?v=1742288824" alt="">
+                    </div>
+                    <div class="container-col half-width center">
+                        <p>IDEAL FOR:</p>
+                        <p>Oily | Flat | Fine
+                        </p>
+                    </div>
+                </div>
+                <p class="center recognition">"Best for Oily Hair" Oprah's Choice 2025 </p>
+            </div>
+            <div class="container-col background-black banner">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">Ingredients</button>
+                        <div class="accordion-content">
+                            <p>Water (Aqua), Sodium Laureth Sulfate, PEG-120 Methyl Glucose Dioleate, Polysorbate 20,
+                                Cocamidopropyl Betaine, Fragrance (Parfum), Sodium Chloride, Chamomilla Recutita
+                                (Matricaria) Flower Extract, Larrea Divaricata Extract, Equisetum Arvense Extract,
+                                Urtica Dioica (Nettle) Extract, Rosmarinus Officinalis (Rosemary) Leaf Extract, Juglans
+                                Nigra (Black Walnut) Leaf Extract, Simmondsia Chinensis (Jojoba) Seed Oil, Sesamum
+                                Indicum (Sesame) Seed Oil, Persea Gratissima (Avocado) Oil, Olea Europaea (Olive) Fruit
+                                Extract, Lavandula Angustifolia (Lavender) Extract, Prunus Amygdalus Dulcis (Sweet
+                                Almond) Fruit Extract, Juglans Nigra (Black Walnut) Shell Extract, Geranium Maculatum
+                                Extract, Gardenia Florida Fruit Extract, Echinacea Purpurea Extract, Panax Ginseng Root
+                                Extract, Betula Alba Leaf Extract, Ginkgo Biloba Leaf Extract, Vitis Vinifera (Grape)
+                                Seed Extract, Camellia Oleifera Leaf Extract, Dioscorea Villosa (Wild Yam) Root Extract,
+                                Symphytum Officinale Rhizome/Root Extract, Frangula Alnus Bark Extract, Arctium Lappa
+                                Root Extract, Quassia Amara Wood Extract, Hydrolyzed Soy Protein, Propylene Glycol,
+                                Menthol, Citric Acid, Cocodimonium Hydroxypropyl Hydrolyzed Wheat Protein, Decylene
+                                Glycol, Caprylyl Glycol, Sorbic Acid, Glycerin, Chlorphenesin, Benzoic Acid,
+                                Phenoxyethanol, Tocopherol, Sodium Benzoate, Sodium Sulfate, Limonene, Yellow 5 (CI
+                                19140), Blue 1 (CI 42090), Red 4 (CI 14700).
+
+                                *Ingredients are subject to change at the manufacturer's discretion. For the most
+                                complete and up-to-date list of ingredients, refer to the product packaging.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach((button) => {
+            button.addEventListener('click', () => {
+                // Toggle the open class on the clicked header
+                button.classList.toggle('open');
+
+                // Close all other open accordion items
+                document.querySelectorAll('.accordion-header').forEach((otherButton) => {
+                    if (otherButton !== button) {
+                        otherButton.classList.remove('open');
+                        otherButton.nextElementSibling.classList.remove('open');
+                    }
+                });
+
+                // Toggle the open class on the associated content
+                const content = button.nextElementSibling;
+                content.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+
+</html>
