@@ -1,505 +1,132 @@
-<style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    .short-description .description {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .short-description .container-col {
-        display: none;
-    }
-
-    .short-description .container-row {
-        display: none;
-    }
-
-    .short-description .summary p {
-        font-size: 16px;
-        text-align: left;
-        margin-top: 0px;
-    }
-
-
-    .short-description .summary {
-        background-color: white;
-        color: black;
-        padding: 0;
-    }
-
-    .short-description .summary h2,
-    .short-description .summary h3 {
-        display: none;
-    }
-
-
-
-    .summary {
-        background-color: black;
-        color: white;
-        padding: 100px 10px;
-        margin-bottom: 0;
-        margin-top: 0;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .summary p {
-        margin-top: 15px;
-        font-size: 20px;
-        font-weight: lighter;
-    }
-
-    .summary h3 {
-        font-size: 30px;
-        font-weight: 500;
-        font-family: "Univers Next", sans-serif;
-        text-transform: uppercase;
-    }
-
-    .summary h2 {
-        padding: 25px;
-        font-weight: lighter;
-        font-family: "brandon-grotesque", sans-serif;
-        text-transform: uppercase;
-    }
-
-    .description {
-        margin-top: 0;
-        font-family: "Times New Roman", Times, serif;
-        font-size: 18px;
-        width: 100%;
-        /* Optional: Add padding if needed */
-    }
-
-    .fragrance h1 {
-        font-family: "Times New Roman", Times, serif;
-    }
-
-    .container-row {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .container-col {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .half-width {
-        width: 50%;
-    }
-
-    .center {
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .background-gray {
-        background-color: #f7f5f6;
-    }
-
-    .background-black {
-        background-color: black;
-        padding-top: 5%;
-        padding-bottom: 5%;
-    }
-
-    .inspiration {
-        border-right: 1px solid #000;
-        padding: 10% 15px 10% 15px;
-    }
-
-    .how-to-use {
-        color: white;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .how-to-use p {
-        margin: 15px 0px;
-    }
-
-    .video {
-        position: relative;
-        width: 95%;
-        /* Ensure it takes up 100% of the available space */
-        max-width: 650px;
-        /* Set a max-width for larger screens */
-        margin: 0 auto;
-        /* Center the container */
-        padding-bottom: 40%;
-        padding-left: 10px;
-        padding-right: 10px;
-        /* 16:9 aspect ratio (height / width * 100 = 9 / 16 * 100) */
-        background-color: #000;
-        /* Optional, adds background color */
-        overflow: hidden;
-        /* Hide overflow to maintain aspect ratio */
-    }
-
-    /* Ensure the iframe fits the container */
-    .video iframe {
-        position: absolute;
-        top: 2.5%;
-        left: 2.5%;
-        width: 95%;
-        height: 95%;
-    }
-
-    .image-container {
-        padding: 5%;
-        border-right: 1px solid #000;
-        padding: 10% 15px 10% 15px;
-    }
-
-    .image-container img {
-        width: 80%;
-    }
-
-    .banner {
-        padding: 15px;
-    }
-
-    .recognition {
-        font-style: italic;
-        font-size: 25px;
-        padding-top: 10px;
-    }
-
-    .accordion {
-        margin-top: 0;
-        margin-bottom: 0;
-        max-width: 100%;
-        margin-left: 0;
-        background-color: black;
-        color: white;
-        padding: 15px 10% 15px 10%;
-        border: none;
-    }
-
-    .accordion ul {
-        list-style-type: square;
-        /* Change bullet shape */
-        padding-left: 20px;
-        /* Adjust padding for the bullet's position */
-    }
-
-    .accordion li {
-        color: white;
-        /* Change text color */
-    }
-
-    .accordion ul li::marker {
-        color: white;
-        /* Change bullet color */
-    }
-
-    .accordion ul li::before {
-        list-style-type: none;
-        display: none;
-        /* Change bullet color */
-    }
-
-    .accordion-item {
-        margin-bottom: 10px;
-        transition: all 0.3s ease;
-        color: white;
-        background-color: black;
-        border: none;
-        padding: 15px;
-    }
-
-    .accordion-item:hover,
-    .accordion-item.open {
-        background-color: black;
-    }
-
-    .accordion-item:hover .accordion-header,
-    .accordion-header:hover {
-        color: white;
-        border: 1px solid white;
-    }
-
-    .accordion-header {
-        width: 100%;
-        text-align: left;
-        padding: 20px;
-        background-color: black;
-        border: none;
-        cursor: pointer;
-        font-size: 22px;
-        font-weight: 500;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: all 0.3s ease;
-    }
-
-
-    .accordion-header::after {
-        content: '+';
-        font-size: 30px;
-        font-weight: 300;
-        color: white;
-        background-color: black;
-        /* Default color for the + icon */
-        transition: all 0.3s ease;
-        /* Smooth transition for color and transform */
-    }
-
-    .accordion-header:hover::after {
-        animation: spin 0.5s 1 ease;
-    }
-
-    .accordion-header.open::after {
-        content: '−';
-        /* Change to - when open */
-    }
-
-    .accordion-header.open:hover::after {
-        animation: spin 0.5s 1 ease;
-        /* Change to - when open */
-    }
-
-    .accordion-content {
-        display: none;
-        font-size: 16px;
-        line-height: 1.6;
-        background-color: black;
-        color: white;
-    }
-
-    .accordion-content p {
-        padding-top: 20px;
-        color: white;
-        background-color: black;
-    }
-
-    .accordion-content.open {
-        color: white;
-        display: block;
-        animation: fadeIn 0.3s ease;
-        background-color: black;
-    }
-
-    @keyframes spin {
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    .accordion-content ul {
-        padding-left: 20px;
-    }
-
-    .accordion-content li {
-        margin-bottom: 10px;
-    }
-
-    .accordion-content strong {
-        color: white;
-    }
-
-    @media (min-width: 768px) and (max-width: 1350px) {
-
-        .description {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 18px;
-            width: 100%;
-            margin-left: 0;
-            margin-right: 0;
-            /* Optional: Add padding if needed */
-        }
-    }
-
-    @media screen and (max-width: 768px) {
-        .container-row {
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .video {
-            width: 95%;
-            /* Allow it to take up nearly all of the screen width */
-            max-width: none;
-            /* Full width on smaller screens */
-            margin: 10px auto;
-            /* Center the element */
-        }
-
-        .how-to-use p {
-            margin-top: 8px;
-            margin-bottom: 8px;
-
-        }
-
-        .how-to-use {
-            width: 100%;
-        }
-
-        .inspiration {
-            border-right: 0px solid #000;
-            width: 100%;
-        }
-
-        .inspiration p {
-            padding: 15px 0px;
-        }
-
-        .image-container {
-            border-right: 0px solid #000;
-            width: 100%;
-        }
-
-        .fragrance {
-            padding: 20px 0;
-        }
-    }
-</style>
-
-<div class="description">
-    <div class="summary">
-        <h3>Philip B.</h3>
-        <h2>Everyday Beautiful Shampoo
-        </h2>
-        <p>
-            A clarifying and volumizing shampoo that helps to remove oil and product buildup, leaving hair looking
-            glossy with a sexy, voluminous feel. A potent blend of plant-derived ingredients condition and provide
-            antioxidant support. The result: hair that looks its lushest, bounciest best.
-        </p>
-    </div>
-
-    <div class="container-col">
-        <div class="container-row background-gray banner">
-            <div class="container-col half-width inspiration center" style="padding: 5%;">
-                <p>THE INSPIRATION:</p>
-                <p>
-                    Customers loved my Forever Shine collection so much that I decided to create a lighter version of it
-                    with an enticing daytime scent profile: fruity-floral, green and unbelievably fresh. I’d recently
-                    been on a nature walk and came across some orange flowers in bloom. I used that exquisite essence as
-                    my jumping-off point, and added a mix of other essential oils, including bergamot and hints of
-                    tangerine and vanilla. I spent months agonizing over each decision until I reached the perfect
-                    combination. The safflower oleosomes and amino acids in the conditioner make all hair types look
-                    bouncy and glossy, and the scent of the extracts is just as captivating. Even better, both the
-                    conditioning agents and fragrance are time-released to keep you feeling gorgeous.
-
-
-                </p>
-            </div>
-            <div class="container-col half-width center fragrance">
-                <p>THE FRAGRANCE:</p>
-                <h1 style="font-style: italic;">Neroli
-                    Tangerine, Citrus
-                    Bergamot, Vanilla</h1>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+
+    <div class="description">
+        <div class="summary">
+            <h3>Philip B.</h3>
+            <h2>Everyday Beautiful Shampoo
+            </h2>
+            <p>
+                A clarifying and volumizing shampoo that helps to remove oil and product buildup, leaving hair looking
+                glossy with a sexy, voluminous feel. A potent blend of plant-derived ingredients condition and provide
+                antioxidant support. The result: hair that looks its lushest, bounciest best.
+            </p>
         </div>
-        <div class="container-row background-black banner center">
-            <div class="container-col center how-to-use">
-                <p>HOW TO USE</p>
-                <p>Apply to wet hair; work into a lather. Rinse well. Follow with conditioner through the length and
-                    ends of hair.
-                </p>
-            </div>
-        </div>
-        <div class="container-col background-gray banner">
-            <div class="container-row ">
-                <div class="half-width image-container center ">
-                    <img src="https://cdn.shopify.com/s/files/1/0077/5415/4099/files/shampoo3.webp?v=1742406800" alt="">
+
+        <div class="container-col">
+            <div class="container-row background-gray banner">
+                <div class="container-col half-width inspiration center" style="padding: 5%;">
+                    <p>THE INSPIRATION:</p>
+                    <p>
+                        Customers loved my Forever Shine collection so much that I decided to create a lighter version
+                        of it
+                        with an enticing daytime scent profile: fruity-floral, green and unbelievably fresh. I’d
+                        recently
+                        been on a nature walk and came across some orange flowers in bloom. I used that exquisite
+                        essence as
+                        my jumping-off point, and added a mix of other essential oils, including bergamot and hints of
+                        tangerine and vanilla. I spent months agonizing over each decision until I reached the perfect
+                        combination. The safflower oleosomes and amino acids in the conditioner make all hair types look
+                        bouncy and glossy, and the scent of the extracts is just as captivating. Even better, both the
+                        conditioning agents and fragrance are time-released to keep you feeling gorgeous.
+
+
+                    </p>
                 </div>
-                <div class="container-col half-width center background-black">
-                    <div class="accordion">
-                        <div class="accordion-item">
-                            <button class="accordion-header">More Information</button>
-                            <div class="accordion-content">
-                                <ul>
-                                    <li>
-                                        <p>A targeted blend of plant extracts (Rosemary, Green Tea Leaf Water,
-                                            Sunflower,
-                                            and Aloe) and Glycerin pamper hair without weighing it down.
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p> Gently detangles. </p>
-                                    </li>
-                                    <li>
-                                        <p>Infused with the fresh, sophisticated scent of Magnolia Flower.
-                                        </p>
-                                    </li>
-                                    <li>
-                                        A perfect daily conditioner for the whole family.
-                                    </li>
-                                </ul>
+                <div class="container-col half-width center fragrance">
+                    <p>THE FRAGRANCE:</p>
+                    <h1 style="font-style: italic;">Neroli
+                        Tangerine, Citrus
+                        Bergamot, Vanilla</h1>
+                </div>
+            </div>
+            <div class="container-row background-black banner center">
+                <div class="container-col center how-to-use">
+                    <p>HOW TO USE</p>
+                    <p>Apply to wet hair; work into a lather. Rinse well. Follow with conditioner through the length and
+                        ends of hair.
+                    </p>
+                </div>
+            </div>
+            <div class="container-col background-gray banner">
+                <div class="container-row ">
+                    <div class="half-width image-container center ">
+                        <img src="https://cdn.shopify.com/s/files/1/0077/5415/4099/files/shampoo3.webp?v=1742406800"
+                            alt="">
+                    </div>
+                    <div class="container-col half-width center background-black">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header">More Information</button>
+                                <div class="accordion-content">
+                                    <ul>
+                                        <li>
+                                            <p>A targeted blend of plant extracts (Rosemary, Green Tea Leaf Water,
+                                                Sunflower,
+                                                and Aloe) and Glycerin pamper hair without weighing it down.
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p> Gently detangles. </p>
+                                        </li>
+                                        <li>
+                                            <p>Infused with the fresh, sophisticated scent of Magnolia Flower.
+                                            </p>
+                                        </li>
+                                        <li>
+                                            A perfect daily conditioner for the whole family.
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <hr style="border-color: white;">
-                            <button class="accordion-header">Ingredients</button>
-                            <div class="accordion-content">
-                                <p>Water(Aqua), Dimethicone, Butylene Glycol, Fragrance (Parfum), Behentrimonium
-                                    Chloride,
-                                    Cetearyl Alcohol, Glycerin, Ethylhexyl Olivate, Polyquaternium-37, Helianthus Annuus
-                                    (Sunflower) Seed Oil, Phenoxyethanol, Panthenol, Ethylhexylglycerin, Maltodextrin,
-                                    Oryza
-                                    Sativa (Rice) Bran Extract, Disodium EDTA, Polyquaternium-7, Squalane, Helianthus
-                                    Annuus
-                                    (Sunflower) Extract, Rosmarinus Officinalis (Rosemary) Leaf Extract, Tocopherol,
-                                    Aloe
-                                    Barbadensis (Aloe Vera) Leaf Juice, Camellia Sinensis (Green Tea) Leaf Water, Cocos
-                                    Nucifera (Coconut) Water, Leuconostoc/Radish Root Ferment Filtrate, Sodium
-                                    Hyaluronate,
-                                    Sodium Benzoate, Sodium Salicylate, Linalool, Benzyl Salicylate, Limonene,
-                                    Hydroxycitronellal, Hexyl Cinnamal, Geraniol.
+                            <div class="accordion-item">
+                                <hr style="border-color: white;">
+                                <button class="accordion-header">Ingredients</button>
+                                <div class="accordion-content">
+                                    <p>Water(Aqua), Dimethicone, Butylene Glycol, Fragrance (Parfum), Behentrimonium
+                                        Chloride,
+                                        Cetearyl Alcohol, Glycerin, Ethylhexyl Olivate, Polyquaternium-37, Helianthus
+                                        Annuus
+                                        (Sunflower) Seed Oil, Phenoxyethanol, Panthenol, Ethylhexylglycerin,
+                                        Maltodextrin,
+                                        Oryza
+                                        Sativa (Rice) Bran Extract, Disodium EDTA, Polyquaternium-7, Squalane,
+                                        Helianthus
+                                        Annuus
+                                        (Sunflower) Extract, Rosmarinus Officinalis (Rosemary) Leaf Extract, Tocopherol,
+                                        Aloe
+                                        Barbadensis (Aloe Vera) Leaf Juice, Camellia Sinensis (Green Tea) Leaf Water,
+                                        Cocos
+                                        Nucifera (Coconut) Water, Leuconostoc/Radish Root Ferment Filtrate, Sodium
+                                        Hyaluronate,
+                                        Sodium Benzoate, Sodium Salicylate, Linalool, Benzyl Salicylate, Limonene,
+                                        Hydroxycitronellal, Hexyl Cinnamal, Geraniol.
 
-                                    *Ingredients are subject to change at the manufacturer's discretion. For the most
-                                    complete and up-to-date list of ingredients, refer to the product packaging.
-                                </p>
+                                        *Ingredients are subject to change at the manufacturer's discretion. For the
+                                        most
+                                        complete and up-to-date list of ingredients, refer to the product packaging.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
-
     </div>
-</div>
 
-<script>
-    document.querySelectorAll('.accordion-header').forEach((button) => {
-        button.addEventListener('click', () => {
-            // Toggle the open class on the clicked header
-            button.classList.toggle('open');
+</body>
 
-            // Close all other open accordion items
-            document.querySelectorAll('.accordion-header').forEach((otherButton) => {
-                if (otherButton !== button) {
-                    otherButton.classList.remove('open');
-                    otherButton.nextElementSibling.classList.remove('open');
-                }
-            });
-
-            // Toggle the open class on the associated content
-            const content = button.nextElementSibling;
-            content.classList.toggle('open');
-        });
-    });
-</script>
+</html>

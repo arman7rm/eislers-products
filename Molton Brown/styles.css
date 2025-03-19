@@ -1,0 +1,271 @@
+body {
+    font-family: "Times New Roman", Times, serif;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+.container-row.perfumer-section {
+    background-image: url('https://cdn.shopify.com/s/files/1/0077/5415/4099/files/widebckg.png?v=1741723048');
+    /* Replace with your image path */
+    min-height: 350px;
+    background-size: cover;
+    /* Ensures the image covers the entire div */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the image from repeating */
+    width: 100vw;
+    /* Makes the div as wide as the viewport */
+    margin-left: -50vw;
+    /* Offsets the div to align with the left edge of the viewport */
+    left: 50%;
+    /* Centers the div horizontally */
+    position: relative;
+    /* Ensures proper positioning */
+    padding: 20px 25% 20px 25%;
+    /* Adds some padding around the content */
+    color: white;
+    /* Adjust text color if needed for better visibility */
+    box-sizing: border-box;
+    /* Ensures padding is included in the width */
+}
+
+.container-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.image-container {
+    width: 50%;
+    /* Take up 50% of the container width */
+    display: flex;
+    justify-content: center;
+    /* Center the image horizontally */
+    align-items: center;
+    /* Center the image vertically */
+}
+
+.did-you-know {
+    width: 50%;
+    padding-top: 30px;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 400px;
+    /* Ensure the image doesn't exceed its container */
+    height: auto;
+    /* Maintain aspect ratio */
+    border-radius: 10px;
+}
+
+.short-description img {
+    display: none;
+}
+
+.short-description hr {
+    display: none;
+}
+
+.short-description .banner {
+    display: none;
+}
+
+.short-description .did-you-know {
+    display: none;
+}
+
+.short-description h1,
+.short-description h2 {
+    font-weight: bold;
+    /* This makes the text bold */
+    font-size: inherit;
+    /* Inherit the font size from the parent */
+}
+
+.perfumer-section {
+    display: flex;
+    align-items: center;
+    margin-top: 35px;
+    font-size: 18px;
+    justify-content: space-around;
+}
+
+.fragrance-exp {
+    width: 50%;
+}
+
+.left-section {
+    width: 60%;
+}
+
+.right-section {
+    width: 50%;
+}
+
+.right-section img {
+    height: auto;
+    display: block;
+    max-width: 500px;
+}
+
+.left-section img {
+    height: auto;
+    display: block;
+    max-width: 400px;
+}
+
+
+.perfumer-image {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: -30%;
+}
+
+hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.perfumer-text {
+    width: 50%;
+    margin-right: 20%;
+}
+
+.perfumer-img-container {
+    width: 50%;
+    margin-left: 10%;
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+
+    /* Styles for tablet/medium devices */
+    .perfumer-section {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .perfumer-text {
+        text-align: center;
+        width: 100%;
+        margin-right: 0%;
+    }
+
+    .perfumer-image {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        margin: 0 20px 10px 20px;
+    }
+
+    .perfumer-img-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        /* Adjust height as needed */
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .fragrance-exp {
+        width: 100%;
+    }
+
+    .banner-with-image {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .perfumer-text {
+        text-align: center;
+        width: 100%;
+        margin-right: 0%;
+    }
+
+    .perfumer-image {
+        width: 155px;
+        height: 155px;
+        border-radius: 50%;
+        margin: 0 20px 10px 20px;
+    }
+
+    .top p {
+        font-size: 16px;
+        /* Adjust paragraph font size for mobile */
+    }
+
+    .right-section {
+
+        justify-content: center;
+        /* Center horizontally */
+    }
+
+    .right-section img {
+        width: 350px;
+        height: auto;
+        display: block;
+    }
+
+    .container-row {
+        flex-direction: column;
+    }
+
+    .image-container {
+        width: 80%;
+        justify-content: center;
+    }
+
+    .second-img {
+        padding-left: 1rem;
+    }
+
+
+    .did-you-know {
+        width: 100%;
+    }
+
+
+    .perfumer-banner {
+        margin-top: 20px;
+    }
+
+    .container-row.perfumer-section {
+
+        padding: 20px;
+        background-image: url('https://cdn.shopify.com/s/files/1/0077/5415/4099/files/mobile_background.png?v=1741722110');
+        /* Replace with your image path */
+    }
+}
+
+.perfumer-img-container {
+    width: 100%;
+    margin-left: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
